@@ -3,7 +3,7 @@ import fs from "fs/promises";
 import parseFrontMatter from "front-matter";
 import invariant from "tiny-invariant";
 import { marked } from "marked";
-const { spawnSync } = require('child_process');
+import { syncCode } from '~/utils/git'
 
 export type Post = {
 	slug: string;
@@ -67,7 +67,8 @@ export async function createPost(post: NewPost) {
   await fs.writeFile(
     path.join(postsPath, post.slug + ".md"),
     md
-  );
+	);
+	syncCode(`create post ${post.slug}`);
   return getPost(post.slug);
 }
 
@@ -84,9 +85,6 @@ export async function updatePost(post: UpdatePost) {
 		path.join(postsPath, post.slug + ".md"),
 		md
 	);
-	spawnSync("git", ["add", '.']);
-	spawnSync("git", ["commit", "-m", `Update ${post.title}`]);
-	spawnSync("git", ["pull"]);
-	spawnSync("git", ["push"]);
+	syncCode(`Update post ${post.slug}`);
 	return getPost(post.slug);
 }
