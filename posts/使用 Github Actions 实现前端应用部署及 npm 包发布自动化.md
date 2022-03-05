@@ -1,5 +1,5 @@
 ---
-title: 使用 Github 实现前端应用部署及 npm 包发布自动化
+title: 使用 Github Actions 实现前端应用部署及 npm 包发布自动化
 ---
 
 # 使用 Github Actions 实现前端应用部署及 npm 包发布自动化
