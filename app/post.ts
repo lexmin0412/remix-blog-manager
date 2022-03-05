@@ -86,6 +86,7 @@ export async function updatePost(post: UpdatePost) {
 	);
 	spawnSync("git", ["add", '.']);
 	spawnSync("git", ["commit", "-m", `Update ${post.title}`]);
+	spawnSync("git", ["pull"]);
 	spawnSync("git", ["push"]);
 	return getPost(post.slug);
 }
