@@ -1,5 +1,5 @@
 ---
-title: CommitLint钩
+title: CommitLint钩子配置
 ---
 
 # CommitLint钩子配置
