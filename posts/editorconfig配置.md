@@ -7,6 +7,7 @@ title: editorconfig配置
 ### 安装
 
 0. 新建 `.editorconfig.js`, 定义规则
+
 ```cmd
 # http://editorconfig.org
 root = true
