@@ -24,3 +24,4 @@ npm start
 ## 参考
 
 - [Remix Docs](https://remix.run/docs)
+- [Install Tailwind CSS with Remix](https://tailwindcss.com/docs/guides/remix)
