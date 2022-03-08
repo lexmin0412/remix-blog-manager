@@ -8,9 +8,13 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 import globalCss from './styles/global.css';
+import styles from "./styles/app.css"
 
 export const links = () => {
-  return [{ rel: "stylesheet", href: globalCss }];
+  return [
+    { rel: "stylesheet", href: styles },
+    { rel: "stylesheet", href: globalCss }
+  ];
 }
 
 export const meta: MetaFunction = () => {
