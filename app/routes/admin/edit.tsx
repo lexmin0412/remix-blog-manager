@@ -71,7 +71,12 @@ export default function EditPost() {
 					<em>Markdown is required</em>
 				) : null}
 				<br />
-				<textarea key={post.markdown} cols={40} rows={20} name="markdown" defaultValue={post.markdown} />
+				<textarea key={post.markdown} rows={40} name="markdown" defaultValue={post.markdown} 
+					style={{
+						width: "100%",
+						boxSizing: "border-box",
+					}}
+				/>
 			</p>
 			<p>
 				<button type="submit">

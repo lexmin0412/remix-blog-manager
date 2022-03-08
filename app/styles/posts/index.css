@@ -1,0 +1,45 @@
+.post-index {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  color: #fff;
+}
+
+a {
+  color: #fff;
+}
+
+li {
+  color: #fff;
+  list-style: none;
+}
+
+.home {
+  height: 60px;
+  line-height: 60px;
+  font-size: 24px;
+}
+
+.post-aside {
+  width: 320px;
+  background-color: #28185d;
+  padding: 0 16px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.posts-main {
+  flex: 1;
+  background-color: rgb(45, 27, 105);
+  padding: 0 24px;
+  overflow: auto;
+}
+
+.list-box .list-item {
+  width: 288px;
+  height: 36px;
+  line-height: 36px;
+  overflow: hidden;
+  font-size: 14px;
+  color: #fff;
+}

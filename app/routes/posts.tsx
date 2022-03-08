@@ -1,28 +1,30 @@
 import { Link, useLoaderData, Outlet } from "remix";
 import { getPosts } from '~/post'
-// import postStyles from './index.css'
+import postStyles from './../styles/posts/index.css'
 
 export type Post = {
 	slug: string;
 	title: string;
 };
 
-// export const links = () => {
-// 	return [{ rel: "stylesheet", href: postStyles }];
-// }
+export const links = () => {
+	return [{ rel: "stylesheet", href: postStyles }];
+}
 
 export const loader = async () => {
   return getPosts();
 };
 
-export default function Posts() {
+export default function Posts({request}) {
+	console.log('requestrequest', request);
+	
 	const posts = useLoaderData<Post[]>();
-	console.log(posts);
+
 	return (
 		<main className="post-index">
-			{/* <aside className="post-aside">
+			<aside className="post-aside">
 			  <div className="home">
-					Lexmin Blog
+					<Link to='/'>Lexmin Blog</Link>
 				</div>
 				<ul className="list-box">
 					{posts.map((post) => (
@@ -34,9 +36,7 @@ export default function Posts() {
 			</aside>
 			<main className="posts-main">
 				<Outlet />
-			</main> */}
-			{/* post index */}
-			点击左侧列表可以跳转到对应的文章
+			</main>
 		</main>
 	);
 }

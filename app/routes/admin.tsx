@@ -17,8 +17,8 @@ export default function Admin() {
   return (
     <div className="admin">
       <nav>
-				<Link to="/admin">
-					<h1>Admin</h1>
+				<Link to="/">
+					<h1>首页</h1>
 				</Link>
         <ul>
           {posts.map((post) => (
