@@ -1,4 +1,4 @@
-import { Link, useLoaderData, Outlet } from "remix";
+import { Link, useLoaderData, Outlet, useLocation } from "remix";
 import { getPosts } from '~/post'
 import { useState } from "react";
 
@@ -16,6 +16,11 @@ export default function Posts() {
 	const [ collapsed, setCollapsed ] = useState(false);
 
 	const handleCollapseToggle = () => setCollapsed(!collapsed)
+
+	const location = useLocation();
+	console.log('lcatin', decodeURIComponent(location.pathname.slice(location.pathname.lastIndexOf('/') + 1)));
+	const currentPost = decodeURIComponent(location.pathname.slice(location.pathname.lastIndexOf('/') + 1));
+	
 	
 	return (
 		<main className="flex text-white">
@@ -33,8 +38,8 @@ export default function Posts() {
 						</div>
 						<ul className="grow">
 							{posts.map((post) => (
-								<li key={post.slug} className="w-full h-9 overflow-auto leading-9 truncate">
-									<Link className="text-white" to={`/posts/${post.slug}`}>{post.title}</Link>
+								<li key={post.slug} className={`w-full h-9 overflow-auto leading-9 truncate hover:bg-gray-700 px-3 rounded-md${currentPost===post.slug ? ' bg-pink-500' : ''}`}>
+									<Link className="text-white text-sm" to={`/posts/${post.slug}`}>{post.title}</Link>
 								</li>
 							))}
 						</ul>

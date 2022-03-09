@@ -4,6 +4,7 @@ import parseFrontMatter from "front-matter";
 import invariant from "tiny-invariant";
 import { marked } from "marked";
 import { syncCode } from '~/utils/git'
+import { transformMarkdown } from '~/utils/md-renderer'
 
 export type Post = {
 	slug: string;
@@ -52,7 +53,7 @@ export async function getPost(slug: string) {
 		isValidPostAttributes(attributes),
 		`Post ${filepath} is missing attributes`
 	);
-	const html = marked(body);
+	const html = transformMarkdown(body);
 	return {slug, html, title: attributes.title, markdown: body};
 }
 
