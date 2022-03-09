@@ -55,14 +55,14 @@ export default function EditPost() {
 					{errors?.title ? (
 						<em>Title is required</em>
 					) : null}
-					<input type="text" name="title" defaultValue={post.title} />
+					<input type="text" className='bg-[#1f134e] px-3 ml-2 rounded-md text-sm h-7 leading-7' name="title" defaultValue={post.title} />
 				</label>
 			</p>
 			<p className='my-4'>
 				<label>
 					Post Slug:{" "}
 					{errors?.slug ? <em>Slug is required</em> : null}
-					<input type="text" name="slug" defaultValue={post.slug}/>
+					<input className='bg-[#1f134e] px-3 ml-2 rounded-md text-sm h-7 leading-7' type="text" name="slug" defaultValue={post.slug}/>
 				</label>
 			</p>
 			<p>
