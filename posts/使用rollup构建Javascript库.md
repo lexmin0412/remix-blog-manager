@@ -1,5 +1,5 @@
 ---
-title: 构建Javascript库
+title: 使用rollup构建Javascript库
 ---
 
 # 使用rollup构建Javascript库
