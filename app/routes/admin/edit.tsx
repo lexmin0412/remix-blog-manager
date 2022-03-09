@@ -48,7 +48,7 @@ export default function EditPost() {
 	console.log('post in render', post.markdown);
 
 	return (
-		<Form method="post">
+		<Form method="post" className='pt-4'>
 			<p>
 				<label>
 					Post Title:{" "}
@@ -58,7 +58,7 @@ export default function EditPost() {
 					<input type="text" name="title" defaultValue={post.title} />
 				</label>
 			</p>
-			<p>
+			<p className='my-4'>
 				<label>
 					Post Slug:{" "}
 					{errors?.slug ? <em>Slug is required</em> : null}
@@ -72,11 +72,11 @@ export default function EditPost() {
 				) : null}
 				<br />
 				<textarea key={post.markdown} rows={40} name="markdown" defaultValue={post.markdown} 
-					className="bg-transparent w-full box-border"
+					className="bg-[#1f134e] my-4 rounded-md px-4 py-4 w-full h-96  box-border"
 				/>
 			</p>
 			<p>
-				<button type="submit">
+				<button className=' bg-pink-500 px-3 py-3 rounded-md' type="submit">
 					{transition.submission
 						? "Updating..."
 						: "Update Post"}
