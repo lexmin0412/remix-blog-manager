@@ -14,7 +14,7 @@ export const loader: LoaderFunction = async ({
 export default function PostSlug() {
 	const post = useLoaderData();
 	return (
-		<main dangerouslySetInnerHTML={{__html: post.html}}>
+		<main className="py-4" dangerouslySetInnerHTML={{__html: post.html}}>
 		</main>
 	);
 }
