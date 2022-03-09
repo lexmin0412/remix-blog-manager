@@ -35,11 +35,13 @@ chore：不属于以上类型的其他类型
 3. 配置 `package.json` 文件
 添加husky字段：
 ```cmd
-"husky": {
-  "hooks": {
-    "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+{
+  "husky": {
+    "hooks": {
+        "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+     }
   }
-},
+}
 ```
 
 4. 测试

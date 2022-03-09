@@ -72,10 +72,7 @@ export default function EditPost() {
 				) : null}
 				<br />
 				<textarea key={post.markdown} rows={40} name="markdown" defaultValue={post.markdown} 
-					style={{
-						width: "100%",
-						boxSizing: "border-box",
-					}}
+					className="bg-transparent w-full box-border"
 				/>
 			</p>
 			<p>

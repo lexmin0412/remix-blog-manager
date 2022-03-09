@@ -633,6 +633,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(31 19 78 / var(--tw-bg-opacity));
 }
 
+.bg-transparent {
+  background-color: transparent;
+}
+
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
