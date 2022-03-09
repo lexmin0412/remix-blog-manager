@@ -6,6 +6,7 @@
 
 - [x] 🏠 一次启动，双端调试
 - [x] 📦 自动同步 github
+- [x] tailwindcss 
 - [ ] 📝 github action 自动构建并上传产物到服务器
 
 ## 开发
@@ -25,3 +26,4 @@ npm start
 
 - [Remix Docs](https://remix.run/docs)
 - [Install Tailwind CSS with Remix](https://tailwindcss.com/docs/guides/remix)
+- [Tailwind Editor Setup](https://tailwindcss.com/docs/editor-setup)

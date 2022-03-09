@@ -1,6 +1,5 @@
 import { Link, useLoaderData, Outlet } from "remix";
 import { getPosts } from '~/post'
-import postStyles from './../styles/posts/index.css'
 import { useState } from "react";
 
 export type Post = {
@@ -8,47 +7,43 @@ export type Post = {
 	title: string;
 };
 
-export const links = () => {
-	return [{ rel: "stylesheet", href: postStyles }];
-}
-
 export const loader = async () => {
   return getPosts();
 };
 
 export default function Posts() {
 	const posts = useLoaderData<Post[]>();
-	const [ collapsed, setCollapsed ] = useState(true);
+	const [ collapsed, setCollapsed ] = useState(false);
 
 	const handleCollapseToggle = () => setCollapsed(!collapsed)
 	
 	return (
-		<main className="post-index">
+		<main className="flex text-white">
 			{
 				collapsed ?
-				<div className="hamburger-btn"
+				<div className="fixed cursor-pointer bottom-4 left-4"
 					onClick={handleCollapseToggle}
 				>
 					展开 》
 				</div>
 				:
-					<aside className="post-aside">
-						<div className="home">
-							<Link to='/'>Lexmin Blog</Link>
+					<aside className="w-80 bg-purple-sidebar flex h-screen flex-col px-5 box-border">
+						<div className="h-14 leading-14 text-2xl">
+							<Link className="text-white" to='/'>Lexmin Blog</Link>
 						</div>
-						<ul className="list-box">
+						<ul className="grow">
 							{posts.map((post) => (
-								<li key={post.slug} className="list-item">
-									<Link to={`/posts/${post.slug}`}>{post.title}</Link>
+								<li key={post.slug} className="w-full h-9 overflow-auto leading-9 truncate">
+									<Link className="text-white" to={`/posts/${post.slug}`}>{post.title}</Link>
 								</li>
 							))}
 						</ul>
-						<div className="collapse-btn"
+						<div className="h-10 leading-10 text-center cursor-pointer"
 							onClick={handleCollapseToggle}
 						>《 折叠</div>
 					</aside>
 			}
-			<main className="posts-main">
+			<main className="grow h-screen bg-purple-main px-6 overflow-auto">
 				<Outlet />
 			</main>
 		</main>
