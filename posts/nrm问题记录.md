@@ -4,7 +4,7 @@ title: nrm问题记录
 
 # nrm 问题记录
 
-windows 系统下安装 nrm 之后可能会出现如下的问题：
+windows 系统下安装 nrm 之后运行 nrm list 可能会出现如下的问题：
 
 ```shell
 nrm : 无法加载文件 C:\Users\zhang\AppData\Roaming\npm\nrm.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/
