@@ -2,61 +2,32 @@
 title: mac操作指南
 ---
 
-# Mac操作指南
+# nrm 问题记录
 
-#### 系统快捷键
-| 快捷键          | 操作                        |
-|-----------------|-----------------------------|
-| Command+Space   | 显示或隐藏“聚焦”搜索栏      |
-| shift+command+3 | 当前可视区域截屏            |
-| shift+command+4 | 自定义区域截屏1，无默认窗口 |
-| shift+command+5 | 录屏                        |
-| shift+command+6 | touchbar截屏                |
-| Control+点击    | 唤起右键菜单                |
+windows 系统下安装 nrm 之后运行 nrm list 可能会出现如下的问题：
 
-#### 窗口操作快捷键
-| 快捷键            | 操作               |
-|-------------------|--------------------|
-| Command+M         | 将最前的窗口最小化 |
-| Control+Command+F | 切换全屏显示应用   |
+```shell
+nrm : 无法加载文件 C:\Users\zhang\AppData\Roaming\npm\nrm.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/
+go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。
+```
 
-#### “访达”相关快捷键
-| 快捷键                  | 操作                               |
-|-------------------------|------------------------------------|
-| Shift+Command+N         | 在“访达”中新建一个新文件夹         |
-| Shift+Command+F         | 打开”最近使用“窗口                 |
-| Shift+Command+D         | 打开“桌面”文件夹                   |
-| Shift+Command+C         | 打开“电脑”窗口                     |
-| Shift+Command+G         | 打开“前往文件夹”窗口               |
-| Shift+Command+O         | 打开“文稿”文件夹                   |
-| Shift+Command+R         | 打开“隔空传送”窗口                 |
-| Shift+Command+P         | 显示或隐藏文件的预览面板           |
-| Shift+Command+T         | 显示或隐藏“访达”窗口中的标签页栏   |
-| Control+Shift+Command+T | 将所选的“访达”项目添加到“程序坞”   |
-| Command+1               | 以图标方式显示“访达”窗口中的项目   |
-| Command+2               | 以列表方式显示“访达”窗口中的项目   |
-| Command+3               | 以分栏ß方式显示“访达”窗口中的项目  |
-| Command+4               | 以封面流方式显示“访达”窗口中的项目 |
-| Command+左中括号        | 前往上一文件夹                     |
-| Command+右中括号        | 前往下一文件夹                     |
-| Command+上箭头          | 打开包含当前文件夹的文件夹         |
-| Command+下箭头          | 打开所选项                         |
-| Command+Delete          | 将所选项移到废纸篓                 |
-| Shift+Command+Delete    | 清倒废纸篓                         |
+解决方案：
 
-#### 文本操作快捷键
-| 快捷键                | 操作                                   |
-|-----------------------|----------------------------------------|
-| Control+Command+Space | 显示字符选择器，可以选择表情和其他符号 |
-| Command+上箭头        | 光标跳转到当前文档的开始处             |
-| Command+下箭头        | 光标跳转到当前文档到结束处             |
-| Command+左箭头        | 光标跳转到行首                         |
-| Command+右箭头        | 光标跳转到行尾                         |
+在 powershell / cmd 中执行如下命令：
 
-#### 终端相关
+```shell
+set-ExecutionPolicy RemoteSigned
+```
 
-| 快捷键      | 操作                     |
-|-------------|--------------------------|
-| Option+鼠标 | 将光标移动到指定位置     |
-| Control+K   | 清空当前光标到行尾的内容 |
-| Control+U   | 清空当前行内容           |
+会看到如下的选项：
+
+```shell
+执行策略更改
+执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID=135170
+中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?
+[Y] 是(Y)  [A] 全是(A)  [N] 否(N)  [L] 全否(L)  [S] 暂停(S)  [?] 帮助 (默认值为“N”):
+```
+
+在用户选项中输入 y, 回车即可。
+
+执行 `get-ExecutionPolicy`，输出结果为 `RemoteSigned` 即可。
