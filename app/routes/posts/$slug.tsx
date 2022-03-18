@@ -53,7 +53,7 @@ export const action: ActionFunction = async ({request, context, params}) => {
 		console.log('error', error);
 	}
 
-	return redirect("/admin");
+	return redirect("/posts");
 };
 
 export default function PostSlug() {
