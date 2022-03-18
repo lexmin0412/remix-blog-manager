@@ -31,7 +31,7 @@ export default function Admin() {
             <ul className="grow">
               {posts.map((post) => (
                 <li key={post.slug} className={`w-full h-9 overflow-auto leading-9 truncate hover:bg-gray-700 px-3 rounded-md${currentPost === post.slug ? ' bg-pink-500' : ''}`}>
-                  <Link className="text-white text-sm" to={`/admin/edit?slug=${post.slug}`}>{post.title}</Link>
+                  <Link className="text-white text-sm" to={`/admin/edit/${post.slug}`}>{post.title}</Link>
                 </li>
               ))}
             </ul>

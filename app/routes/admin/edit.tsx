@@ -1,12 +1,15 @@
-import { useTransition, useLoaderData, useActionData, Form, redirect, useSubmit } from 'remix'
+import { useTransition, useLoaderData, useActionData, Form, redirect, useSubmit, Outlet } from 'remix'
 import type { LoaderFunction, ActionFunction } from "remix";
 import invariant from "tiny-invariant";
 import { deletePost, getPost, updatePost } from '~/post';
 
-export const loader: LoaderFunction = async ({request}) => {
+export const loader: LoaderFunction = async ({request, params}) => {
 	const url = new URL(request.url)
-	invariant(url.searchParams.get('slug'), "expected params.slug");
-	return getPost(url.searchParams.get('slug'))
+	console.log('request', request);
+	
+	// invariant(url.searchParams.get('slug'), "expected params.slug");
+	// return getPost(url.searchParams.get('slug'))
+	return getPost(params.slug)
 }
 
 type PostError = {
@@ -17,7 +20,7 @@ type PostError = {
 
 export const action: ActionFunction = async ({request, context}) => {
 
-	const { method } = request
+	const { method, params } = request
 
 	console.log('method in action', method);
 	
@@ -38,9 +41,9 @@ export const action: ActionFunction = async ({request, context}) => {
 		return errors;
 	}
 
-	invariant(typeof title === "string");
-	invariant(typeof slug === "string");
-	invariant(typeof markdown === "string");
+	// invariant(typeof title === "string");
+	// invariant(typeof slug === "string");
+	// invariant(typeof markdown === "string");
 
 	console.log('method', method);
 	
@@ -74,51 +77,8 @@ export default function EditPost() {
 	const submit = useSubmit();
 
 	return (
-		<Form
-			className='pt-4'
-		>
-			<p>
-				<label>
-					Post Title:{" "}
-					{errors?.title ? (
-						<em>Title is required</em>
-					) : null}
-					<input type="text" className='bg-[#1f134e] px-3 ml-2 rounded-md text-sm h-7 leading-7' name="title" defaultValue={post.title} />
-				</label>
-			</p>
-			<p className='my-4'>
-				<label>
-					Post Slug:{" "}
-					{errors?.slug ? <em>Slug is required</em> : null}
-					<input className='bg-[#1f134e] px-3 ml-2 rounded-md text-sm h-7 leading-7' type="text" name="slug" defaultValue={post.slug}/>
-				</label>
-			</p>
-			<p>
-				<label>Markdown:</label>{" "}
-				{errors?.markdown ? (
-					<em>Markdown is required</em>
-				) : null}
-				<br />
-				<textarea key={post.markdown} rows={40} name="markdown" defaultValue={post.markdown} 
-					className="bg-[#1f134e] my-4 rounded-md px-4 py-4 w-full h-96  box-border"
-				/>
-			</p>
-			<div>
-				<button formMethod='post' className=' bg-pink-500 px-3 py-3 rounded-md' type="submit"
-					onClick={(e) => submit(e.currentTarget)}
-				>
-					{transition.submission
-						? "Updating..."
-						: "Update Post"}
-				</button>
-				<button formMethod='delete' id='delete' className=' bg-pink-500 px-3 py-3 rounded-md'
-					onClick={(e) => submit(e.currentTarget)}
-				>
-					{transition.submission
-						? "Deleting..."
-						: "Delete Post"}
-				</button>
-			</div>
-		</Form>
+		<div>
+			<Outlet />
+		</div>
 	)
 }
