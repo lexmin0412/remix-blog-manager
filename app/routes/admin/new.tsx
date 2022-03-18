@@ -41,21 +41,21 @@ export default function NewPost() {
 	const transition = useTransition();
 
 	return (
-		<Form method="post">
+		<Form method="post" className="pt-4">
 			<p>
 				<label>
 					Post Title:{" "}
 					{errors?.title ? (
 						<em>Title is required</em>
 					) : null}
-					<input type="text" name="title" />
+					<input type="text" name="title" className='bg-[#1f134e] px-3 ml-2 rounded-md text-sm h-7 leading-7' />
 				</label>
 			</p>
-			<p>
+			<p className="my-4">
 				<label>
 					Post Slug:{" "}
 					{errors?.slug ? <em>Slug is required</em> : null}
-					<input type="text" name="slug" />
+					<input className='bg-[#1f134e] px-3 ml-2 rounded-md text-sm h-7 leading-7' type="text" name="slug" />
 				</label>
 			</p>
 			<p>
@@ -64,10 +64,12 @@ export default function NewPost() {
 					<em>Markdown is required</em>
 				) : null}
 				<br />
-				<textarea id="markdown" rows={20} name="markdown" />
+				<textarea id="markdown" rows={20} name="markdown" 
+					className="bg-[#1f134e] my-4 rounded-md px-4 py-4 w-full h-96  box-border"
+				/>
 			</p>
 			<p>
-				<button type="submit">
+				<button className=' bg-pink-500 px-3 py-3 rounded-md' type="submit">
 					{transition.submission
 						? "Creating..."
 						: "Create Post"}
