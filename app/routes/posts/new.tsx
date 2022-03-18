@@ -32,7 +32,7 @@ export const action: ActionFunction = async ({request}) => {
 	invariant(typeof markdown === "string");
 	await createPost({title, slug, markdown});
 
-	return redirect(`/admin/${slug}`);
+	return redirect(`/posts/${slug}`);
 };
 
 export default function NewPost() {

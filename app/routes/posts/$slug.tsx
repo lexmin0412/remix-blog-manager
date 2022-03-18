@@ -63,12 +63,14 @@ export default function PostSlug() {
 	return (
 		<div className="pt-4">
 			<div className="flex">
-				<Link to={`/admin/edit/${post.slug}`}
-					className="bg-pink-500 px-3 py-3 rounded-md"
+				<Link to={`/posts/new`}
+					className="bg-pink-500 px-3 py-3 rounded-md mr-4"
+				>新建</Link>
+				<Link to={`/posts/edit/${post.slug}`}
+					className="bg-pink-500 px-3 py-3 rounded-md mr-4"
 				>编辑</Link>
 				<Form
 					method='post'
-					className="pl-4"
 				>
 					<button type="submit"
 						className=" bg-pink-500 px-3 py-3 rounded-md"
