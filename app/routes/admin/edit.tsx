@@ -52,7 +52,11 @@ export const action: ActionFunction = async ({request, context}) => {
 			console.log('delete post error', error);
 		}
 	} else {
-		await updatePost({title, slug, markdown, originalSlug: url.searchParams.get('slug') as string});
+		try {
+			await updatePost({title, slug, markdown, originalSlug: url.searchParams.get('slug') as string});
+		} catch (error) {
+			console.log('updatePost post error', error);
+		}
 	}
 	
 	return redirect("/admin");
@@ -98,7 +102,9 @@ export default function EditPost() {
 				/>
 			</p>
 			<div>
-				<button formMethod='post' className=' bg-pink-500 px-3 py-3 rounded-md' type="submit">
+				<button formMethod='post' className=' bg-pink-500 px-3 py-3 rounded-md' type="submit"
+					onClick={(e) => submit(e.currentTarget)}
+				>
 					{transition.submission
 						? "Updating..."
 						: "Update Post"}
