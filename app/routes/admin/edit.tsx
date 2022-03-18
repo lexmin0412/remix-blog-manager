@@ -48,7 +48,7 @@ export default function EditPost() {
 	console.log('post in render', post.markdown);
 
 	return (
-		<Form method="post" className='pt-4'>
+		<Form action='' method="post" className='pt-4'>
 			<p>
 				<label>
 					Post Title:{" "}
