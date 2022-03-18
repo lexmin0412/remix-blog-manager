@@ -15,7 +15,8 @@ type PostError = {
 	markdown?: boolean;
 };
 
-export const action: ActionFunction = async ({request}) => {
+export const action: ActionFunction = async ({request, context}) => {
+	console.log('context', context)
 	console.log('request', request)
 	const url = new URL(request.url)
 	await new Promise((res) => setTimeout(res, 1000));
