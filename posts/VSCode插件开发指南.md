@@ -14,7 +14,7 @@ title: VSCode插件开发指南
 - 官方脚手架工具Yeoman和Generator-code
 
   ```bash
-  $yarn global add yo generator-code
+  $ yarn global add yo generator-code
   ```
 
 - 官方打包/发布工具vsce
