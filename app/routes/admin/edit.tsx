@@ -18,6 +18,9 @@ type PostError = {
 export const action: ActionFunction = async ({request, context}) => {
 
 	const { method } = request
+
+	console.log('method in action', method);
+	
 	const url = new URL(request.url)
 	await new Promise((res) => setTimeout(res, 1000));
 	const formData = await request.formData();
@@ -38,6 +41,9 @@ export const action: ActionFunction = async ({request, context}) => {
 	invariant(typeof title === "string");
 	invariant(typeof slug === "string");
 	invariant(typeof markdown === "string");
+
+	console.log('method', method);
+	
 
 	if (method === 'DELETE') {
 		try {
