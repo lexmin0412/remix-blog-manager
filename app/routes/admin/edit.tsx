@@ -75,9 +75,7 @@ export default function EditPost() {
 
 	return (
 		<Form
-			action={`/admin/edit?slug=${post.slug}`}
 			className='pt-4'
-			// onSubmit={e=>e.preventDefault()}
 		>
 			<p>
 				<label>
