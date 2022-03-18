@@ -1,7 +1,7 @@
 import { useTransition, useLoaderData, useActionData, Form, redirect } from 'remix'
 import type { LoaderFunction, ActionFunction } from "remix";
 import invariant from "tiny-invariant";
-import { getPost, updatePost } from '~/post';
+import { getPost, updatePost, deletePost } from '~/post';
 
 export const loader: LoaderFunction = async ({request}) => {
 	const url = new URL(request.url)
@@ -75,13 +75,18 @@ export default function EditPost() {
 					className="bg-[#1f134e] my-4 rounded-md px-4 py-4 w-full h-96  box-border"
 				/>
 			</p>
-			<p>
+			<div>
 				<button className=' bg-pink-500 px-3 py-3 rounded-md' type="submit">
 					{transition.submission
 						? "Updating..."
 						: "Update Post"}
 				</button>
-			</p>
+				<button className=' bg-pink-500 px-3 py-3 rounded-md'>
+					{transition.submission
+						? "Deleting..."
+						: "Delete Post"}
+				</button>
+			</div>
 		</Form>
 	)
 }
