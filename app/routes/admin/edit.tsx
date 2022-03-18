@@ -54,10 +54,9 @@ export default function EditPost() {
 	const submit = useSubmit();
 
 	return (
-		<Form 
-			method="post" 
+		<Form
 			className='pt-4'
-			onSubmit={e=>e.preventDefault()}
+			// onSubmit={e=>e.preventDefault()}
 		>
 			<p>
 				<label>
@@ -91,17 +90,13 @@ export default function EditPost() {
 						? "Updating..."
 						: "Update Post"}
 				</button>
-				<form method="delete">
-					<button formMethod='delete' onClick={async (e) => {
-						// e.preventDefault()
-						console.log('delete', post.slug);
-						// submit(e.currentTarget, {replace: true});
-					}} id='delete' className=' bg-pink-500 px-3 py-3 rounded-md'>
-						{transition.submission
-							? "Deleting..."
-							: "Delete Post"}
-					</button>
-				</form>
+				<button formMethod='delete' id='delete' className=' bg-pink-500 px-3 py-3 rounded-md'
+					onClick={(e) => submit(e.currentTarget)}
+				>
+					{transition.submission
+						? "Deleting..."
+						: "Delete Post"}
+				</button>
 			</div>
 		</Form>
 	)
