@@ -1,7 +1,7 @@
 import { useTransition, useLoaderData, useActionData, Form, redirect, useSubmit } from 'remix'
 import type { LoaderFunction, ActionFunction } from "remix";
 import invariant from "tiny-invariant";
-import { getPost, updatePost } from '~/post';
+import { deletePost, getPost, updatePost } from '~/post';
 
 export const loader: LoaderFunction = async ({request}) => {
 	const url = new URL(request.url)
@@ -16,14 +16,12 @@ type PostError = {
 };
 
 export const action: ActionFunction = async ({request, context}) => {
-	console.log('context', context)
-	console.log('request', request.method)
+
+	const { method } = request
 	const url = new URL(request.url)
 	await new Promise((res) => setTimeout(res, 1000));
 	const formData = await request.formData();
-	console.log('formData', formData.get('_method'));
 	
-
 	const title = formData.get("title");
 	const slug = formData.get("slug");
 	const markdown = formData.get("markdown");
@@ -40,8 +38,17 @@ export const action: ActionFunction = async ({request, context}) => {
 	invariant(typeof title === "string");
 	invariant(typeof slug === "string");
 	invariant(typeof markdown === "string");
-	await updatePost({title, slug, markdown, originalSlug: url.searchParams.get('slug') as string});
 
+	if (method === 'DELETE') {
+		try {
+			await deletePost(slug)
+		} catch (error) {
+			console.log('delete post error', error);
+		}
+	} else {
+		await updatePost({title, slug, markdown, originalSlug: url.searchParams.get('slug') as string});
+	}
+	
 	return redirect("/admin");
 };
 
