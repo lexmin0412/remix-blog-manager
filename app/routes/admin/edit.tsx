@@ -91,15 +91,17 @@ export default function EditPost() {
 						? "Updating..."
 						: "Update Post"}
 				</button>
-				<button formMethod='delete' onClick={async(e)=> {
-					// e.preventDefault()
-					console.log('delete', post.slug);
-					submit(e.currentTarget, {replace: true});
-				}} id='delete' className=' bg-pink-500 px-3 py-3 rounded-md'>
-					{transition.submission
-						? "Deleting..."
-						: "Delete Post"}
-				</button>
+				<form method="delete">
+					<button formMethod='delete' onClick={async (e) => {
+						// e.preventDefault()
+						console.log('delete', post.slug);
+						// submit(e.currentTarget, {replace: true});
+					}} id='delete' className=' bg-pink-500 px-3 py-3 rounded-md'>
+						{transition.submission
+							? "Deleting..."
+							: "Delete Post"}
+					</button>
+				</form>
 			</div>
 		</Form>
 	)
