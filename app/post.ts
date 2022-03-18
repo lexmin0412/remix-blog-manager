@@ -1,5 +1,5 @@
 import path from "path";
-import fs from "fs/promises";
+import fs from "fs";
 import parseFrontMatter from "front-matter";
 import invariant from "tiny-invariant";
 import { marked } from "marked";
@@ -24,10 +24,10 @@ function isValidPostAttributes(
 }
 
 export async function getPosts() {
-	const dir = await fs.readdir(postsPath);
+	const dir = await fs.readdirSync(postsPath);
 	return Promise.all(
 		dir.map(async (filename) => {
-			const file = await fs.readFile(
+			const file = await fs.readFileSync(
 				path.join(postsPath, filename)
 			);
 			const {attributes} = parseFrontMatter(
@@ -47,7 +47,7 @@ export async function getPosts() {
 
 export async function getPost(slug: string) {
 	const filepath = path.join(postsPath, slug + ".md");
-	const file = await fs.readFile(filepath);
+	const file = await fs.readFileSync(filepath);
 	const { attributes, body } = parseFrontMatter(file.toString());
 	invariant(
 		isValidPostAttributes(attributes),
@@ -65,7 +65,7 @@ type NewPost = {
 
 export async function createPost(post: NewPost) {
   const md = `---\ntitle: ${post.title}\n---\n\n${post.markdown}`;
-  await fs.writeFile(
+  await fs.writeFileSync(
     path.join(postsPath, post.slug + ".md"),
     md
 	);
@@ -82,7 +82,7 @@ type UpdatePost = {
 
 export async function updatePost(post: UpdatePost) {
 	const md = `---\ntitle: ${post.title}\n---\n\n${post.markdown}`;
-	await fs.writeFile(
+	await fs.writeFileSync(
 		path.join(postsPath, post.slug + ".md"),
 		md
 	);

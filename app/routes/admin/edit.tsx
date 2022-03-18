@@ -1,4 +1,4 @@
-import { useTransition, useLoaderData, useActionData, Form, redirect } from 'remix'
+import { useTransition, useLoaderData, useActionData, Form, redirect, useSubmit } from 'remix'
 import type { LoaderFunction, ActionFunction } from "remix";
 import invariant from "tiny-invariant";
 import { getPost, updatePost } from '~/post';
@@ -50,10 +50,7 @@ export default function EditPost() {
 	const transition = useTransition();
 	console.log('post in render', post.markdown);
 
-	// const handleDelete = (slug) => {
-	// 	console.log('handleDelete', slug);
-	// 	updatePost(slug);
-	// }
+	const submit = useSubmit();
 
 	return (
 		<Form 
@@ -92,15 +89,15 @@ export default function EditPost() {
 						? "Updating..."
 						: "Update Post"}
 				</button>
-				{/* <div onClick={async(e)=> {
-					e.preventDefault()
+				<button onClick={async(e)=> {
+					// e.preventDefault()
 					console.log('delete', post.slug);
-					handleDelete(post.slug)
+					submit(e.currentTarget, {replace: true});
 				}} id='delete' className=' bg-pink-500 px-3 py-3 rounded-md'>
 					{transition.submission
 						? "Deleting..."
 						: "Delete Post"}
-				</div> */}
+				</button>
 			</div>
 		</Form>
 	)
