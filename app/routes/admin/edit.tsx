@@ -62,7 +62,7 @@ export const action: ActionFunction = async ({request, context}) => {
 	console.log('action end');
 	
 	
-	return redirect("/admin");
+	return redirect("/");
 };
 
 export default function EditPost() {
