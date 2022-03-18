@@ -57,6 +57,7 @@ export default function EditPost() {
 		<Form 
 			method="post" 
 			className='pt-4'
+			onSubmit={e=>e.preventDefault()}
 		>
 			<p>
 				<label>
