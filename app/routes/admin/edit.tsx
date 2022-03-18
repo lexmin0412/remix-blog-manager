@@ -16,9 +16,12 @@ type PostError = {
 };
 
 export const action: ActionFunction = async ({request}) => {
+	console.log('request', request)
 	const url = new URL(request.url)
 	await new Promise((res) => setTimeout(res, 1000));
 	const formData = await request.formData();
+	console.log('formData', formData);
+	
 
 	const title = formData.get("title");
 	const slug = formData.get("slug");
@@ -81,7 +84,7 @@ export default function EditPost() {
 						? "Updating..."
 						: "Update Post"}
 				</button>
-				<button className=' bg-pink-500 px-3 py-3 rounded-md'>
+				<button id='delete' className=' bg-pink-500 px-3 py-3 rounded-md'>
 					{transition.submission
 						? "Deleting..."
 						: "Delete Post"}
