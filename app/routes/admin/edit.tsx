@@ -17,11 +17,11 @@ type PostError = {
 
 export const action: ActionFunction = async ({request, context}) => {
 	console.log('context', context)
-	console.log('request', request)
+	console.log('request', request.method)
 	const url = new URL(request.url)
 	await new Promise((res) => setTimeout(res, 1000));
 	const formData = await request.formData();
-	console.log('formData', formData);
+	console.log('formData', formData.get('_method'));
 	
 
 	const title = formData.get("title");
