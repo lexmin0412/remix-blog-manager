@@ -86,12 +86,12 @@ export default function EditPost() {
 				/>
 			</p>
 			<div>
-				<button className=' bg-pink-500 px-3 py-3 rounded-md' type="submit">
+				<button formMethod='post' className=' bg-pink-500 px-3 py-3 rounded-md' type="submit">
 					{transition.submission
 						? "Updating..."
 						: "Update Post"}
 				</button>
-				<button onClick={async(e)=> {
+				<button formMethod='delete' onClick={async(e)=> {
 					// e.preventDefault()
 					console.log('delete', post.slug);
 					submit(e.currentTarget, {replace: true});
