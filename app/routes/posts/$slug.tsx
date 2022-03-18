@@ -61,20 +61,24 @@ export default function PostSlug() {
 	const errors = useActionData();
 	const transition = useTransition();
 	return (
-		<div>
-			<Link to={`/admin/edit/${post.slug}`}>编辑</Link>
-			<Form
-				method='post'
-				className='pt-4'
-			>
-				<button type="submit"
-					className=" bg-pink-500 px-3 py-3 rounded-md"
+		<div className="pt-4">
+			<div className="flex">
+				<Link to={`/admin/edit/${post.slug}`}
+					className="bg-pink-500 px-3 py-3 rounded-md"
+				>编辑</Link>
+				<Form
+					method='post'
+					className="pl-4"
 				>
-					{transition.submission
-						? "正在删除..."
-						: "删除"}
-				</button>
-			</Form>
+					<button type="submit"
+						className=" bg-pink-500 px-3 py-3 rounded-md"
+					>
+						{transition.submission
+							? "正在删除..."
+							: "删除"}
+					</button>
+				</Form>
+			</div>
 			<main className="py-4" dangerouslySetInnerHTML={{__html: post.html}}>
 			</main>
 		</div>
