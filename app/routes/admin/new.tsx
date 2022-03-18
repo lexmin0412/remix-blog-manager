@@ -32,7 +32,7 @@ export const action: ActionFunction = async ({request}) => {
 	invariant(typeof markdown === "string");
 	await createPost({title, slug, markdown});
 
-	return redirect("/admin");
+	return redirect(`/admin/${slug}`);
 };
 
 export default function NewPost() {
@@ -41,7 +41,7 @@ export default function NewPost() {
 	const transition = useTransition();
 
 	return (
-		<Form method="post" className="pt-4">
+		<Form method="post" className="pt-4" action="/admin/new">
 			<p>
 				<label>
 					Post Title:{" "}

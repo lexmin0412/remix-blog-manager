@@ -1,7 +1,7 @@
 import { useTransition, useLoaderData, useActionData, Form, redirect } from 'remix'
 import type { LoaderFunction, ActionFunction } from "remix";
 import invariant from "tiny-invariant";
-import { getPost, updatePost, deletePost } from '~/post';
+import { getPost, updatePost } from '~/post';
 
 export const loader: LoaderFunction = async ({request}) => {
 	const url = new URL(request.url)
@@ -50,8 +50,16 @@ export default function EditPost() {
 	const transition = useTransition();
 	console.log('post in render', post.markdown);
 
+	// const handleDelete = (slug) => {
+	// 	console.log('handleDelete', slug);
+	// 	updatePost(slug);
+	// }
+
 	return (
-		<Form action='' method="post" className='pt-4'>
+		<Form 
+			method="post" 
+			className='pt-4'
+		>
 			<p>
 				<label>
 					Post Title:{" "}
@@ -84,11 +92,15 @@ export default function EditPost() {
 						? "Updating..."
 						: "Update Post"}
 				</button>
-				<button id='delete' className=' bg-pink-500 px-3 py-3 rounded-md'>
+				{/* <div onClick={async(e)=> {
+					e.preventDefault()
+					console.log('delete', post.slug);
+					handleDelete(post.slug)
+				}} id='delete' className=' bg-pink-500 px-3 py-3 rounded-md'>
 					{transition.submission
 						? "Deleting..."
 						: "Delete Post"}
-				</button>
+				</div> */}
 			</div>
 		</Form>
 	)
