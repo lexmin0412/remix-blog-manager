@@ -58,6 +58,9 @@ export const action: ActionFunction = async ({request, context}) => {
 			console.log('updatePost post error', error);
 		}
 	}
+
+	console.log('action end');
+	
 	
 	return redirect("/admin");
 };
