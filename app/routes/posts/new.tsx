@@ -41,7 +41,7 @@ export default function NewPost() {
 	const transition = useTransition();
 
 	return (
-		<Form method="post" className="pt-4" action="/admin/new">
+		<Form method="post" className="pt-4">
 			<p>
 				<label>
 					Post Title:{" "}
