@@ -89,3 +89,13 @@ export async function updatePost(post: UpdatePost) {
 	syncCode(`Update post ${post.slug}`);
 	return getPost(post.slug);
 }
+
+export async function deletePost(slug: string) {
+	try {
+		await fs.unlink(path.join(postsPath, slug + ".md"));
+	} catch (error) {
+		return error;
+	}
+	syncCode(`Delete post ${slug}`);
+	return getPost(slug);
+}
