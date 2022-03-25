@@ -2,7 +2,7 @@
 title: CommitLint钩子配置
 ---
 
-# CommitLint钩子配置
+# Commitlint钩子配置
 
 1. 安装 `commitlint` 和 `husky` 依赖
 ```cmd
