@@ -27,7 +27,7 @@ jobs:
         PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
         HOST: ${{ secrets.DEPLOY_HOST }}
         SOURCE: 'build'
-        TARGET: '/cellerchan.top/remix-blog-manager'
+        TARGET: '/cellerchan.top/remix-blog-manager/build'
     
     - name: Deploy to Server
       uses: hengkx/ssh-deploy@v1.0.1
@@ -36,5 +36,5 @@ jobs:
         PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
         HOST: ${{ secrets.DEPLOY_HOST }}
         SOURCE: 'public'
-        TARGET: '/cellerchan.top/remix-blog-manager'
+        TARGET: '/cellerchan.top/remix-blog-manager/public'
         AFTER_COMMAND: 'pm2 restart all'
