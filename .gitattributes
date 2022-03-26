@@ -1,4 +1,4 @@
-*.js linguist-language=javascript
+*.js linguist-language=typescript
 *.ts[x] linguist-language=typescript
 *.md linguist-language=markdown
 *.yml linguist-language=yaml
