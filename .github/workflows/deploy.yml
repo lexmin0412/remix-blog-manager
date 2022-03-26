@@ -13,12 +13,17 @@ jobs:
       with:
         persist-credentials: false
 
+
+    - name: Install dependencies
+      run: npm install
+      run: npm run build
+
     - name: Deploy to Server
       uses: hengkx/ssh-deploy@v1.0.1
       with: # 以下为参数
         USERNAME: ${{ secrets.DEPLOY_USER }} # 为了用户信息安全对敏感数据可以在secrets中配置请看下图
         PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
         HOST: ${{ secrets.DEPLOY_HOST }}
-        SOURCE: '/'
+        SOURCE: 'build'
         TARGET: '/cellerchan.top/remix-blog-manager'
         AFTER_COMMAND: 'pm2 restart all'
