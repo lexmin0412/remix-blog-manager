@@ -69,7 +69,7 @@ export async function createPost(post: NewPost) {
     path.join(postsPath, post.slug + ".md"),
     md
 	);
-	syncCode(`create post ${post.slug}`);
+	await syncCode(`create post ${post.slug}`);
   return getPost(post.slug);
 }
 
