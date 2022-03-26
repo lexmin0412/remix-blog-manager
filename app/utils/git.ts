@@ -1,8 +1,8 @@
 const { spawnSync } = require('child_process');
 
-export const syncCode = (msg: string) => {
-  spawnSync("git", ["add", '.']);
-  spawnSync("git", ["commit", "-m", msg]);
-  spawnSync("git", ["pull"]);
-  spawnSync("git", ["push"]);
+export const syncCode = async(msg: string) => {
+  await spawnSync("git", ["add", '.']);
+  await spawnSync("git", ["commit", "-m", msg]);
+  await spawnSync("git", ["pull"]);
+  await spawnSync("git", ["push"]);
 }
