@@ -1,0 +1,24 @@
+name: 部署文件到服务器
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+
+    - name: Deploy to Server
+        uses: hengkx/ssh-deploy@v1.0.1
+        with: # 以下为参数
+          USERNAME: ${{ secrets.DEPLOY_USER }} # 为了用户信息安全对敏感数据可以在secrets中配置请看下图
+          PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          SOURCE: '/'
+          TARGET: '/cellerchan.top/remix-blog-manager'
+          AFTER_COMMAND: 'pm2 restart all'
