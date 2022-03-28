@@ -1,0 +1,5 @@
+*.js linguist-language=javascript
+*.ts linguist-language=typescript
+*.tsx linguist-language=typescript
+*.md linguist-language=markdown
+*.yml linguist-language=yaml
