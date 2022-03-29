@@ -27,8 +27,8 @@ jobs:
         PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
         HOST: ${{ secrets.DEPLOY_HOST }}
         SOURCE: 
-        - build
-        - public
+        - 'build'
+        - 'public'
         TARGET: 
         - '/cellerchan.top/remix-blog-manager/build'
         - '/cellerchan.top/remix-blog-manager/public'
