@@ -23,7 +23,7 @@ jobs:
     - name: Deploy to Server
       uses: lexmin0412/ssh-deploy@master
       with: # 以下为参数
-        USERNAME: ${{ secrets.DEPLOY_USER }} # 为了用户信息安全对敏感数据可以在secrets中配置请看下图
+        USERNAME: ${{ secrets.DEPLOY_USER }}
         PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
         HOST: ${{ secrets.DEPLOY_HOST }}
         SOURCE: build,public
