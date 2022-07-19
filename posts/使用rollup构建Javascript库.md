@@ -2,7 +2,7 @@
 title: 使用rollup构建Javascript库
 ---
 
-# 使用 rollup 构建Javascript库
+# 使用 rollup 构建 Javascript 库
 
 ## Why Rollup?
 
