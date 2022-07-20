@@ -18,3 +18,5 @@ pages:
   only:
     - master
 ```
+
+主要是需要使用 pages 而不是原来的 stages。
