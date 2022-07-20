@@ -7,8 +7,8 @@ pages:
   stage: deploy
   image: node:14.15.0
   script:
-    - pnpm i
-    - pnpm build
+    - npm i
+    - npm run build
     - mkdir .public
     - cp -r build/* .public
     - mv .public public
