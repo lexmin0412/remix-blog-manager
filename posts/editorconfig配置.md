@@ -1,5 +1,5 @@
 ---
-title: editorconfig配置
+title: editorConfig配置
 ---
 
 # CommitLint钩子配置
